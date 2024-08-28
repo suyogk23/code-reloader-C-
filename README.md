@@ -30,11 +30,13 @@ UNIX APIs fro symbol associations:
 
 # How to run:
 - install premake5
+
 In command line:
 - run `premake5 gmake`
 - run `make`
 - run the runtime: `RePlexRuntime`
 - reccomend to run `make clean` if any issues
+
 *This program runs or can be used only on Linux/macOS (UNIX based platforms)
 
 # References:
