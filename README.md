@@ -5,18 +5,6 @@ A code reloader, also known as hot reload, hot deployment, or hot swapping, is a
 - shared lib: act as a live code-reloader
 - runtime
 
-# Build process:
-RePlex
-|-- premake5.lua
-|-- lib
-|   |-- RePlex.cpp
-|   +-- pub
-|       +-- RePlex.h
-+-- runtime
-    +-- Main.cpp
-
-- pub will contain public headers
-
 # Symbols
 - Symbols: used by linker to determine addr space of a function, var, etc... Symbols are used by linker @ compile time(locates memory address of instruction). 
 UNIX APIs fro symbol associations:
@@ -24,24 +12,6 @@ UNIX APIs fro symbol associations:
 - dlsym: Given a symbol, returns the address of that symbol
 - dlerror: Returns an error message describing the last thing that went wrong
 - dlclose: Releases a reference to the specified library. If the reference count drops to zero, the library is removed from the address space.
-
-- Quick test:
-+------+
-|RePlex| Library for performing loading and unloading
-+------+
- |       \  Is a dependency of
- |        \
- |         *---*
- |              \     +-------------+
- |               *--> |RePlexRuntime|
- |                    +-------------+
- | Loads               /
- |                    / Uses symbols in RePlexTest
-  \                  /
-   \     +----------+
-    *--> |RePlexTest| Library that gets reloaded/ hot-loaded while running
-         +----------+
-
 
 # Interface Structure
 - RePlex will need to expose two public interfaces, one for publishing a hot-loadable library, and one for loading and reloading those hot-loadable libraries. To do this, we’ll make a class called RePlexModule in `Replex.h`. 
@@ -60,7 +30,7 @@ UNIX APIs fro symbol associations:
 
 # How to run:
 - install premake5
-- In command line:
+In command line:
 - run `premake5 gmake`
 - run `make`
 - run the runtime: `RePlexRuntime`
