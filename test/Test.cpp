@@ -1,9 +1,6 @@
-// test/Test.cpp
-#include "pub/Test.h"
-#include <cstdio>
-
-void foo(){
-    printf("Hello, changes are made\n");
+#include "/Users/suyog_k/Desktop/code-reloader/test/pub/Test.h"
+int bar = 300;
+int foo(int x)
+{
+   return x%2;
 }
-
-int bar = 9093;

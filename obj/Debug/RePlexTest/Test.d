@@ -1,4 +1,5 @@
-obj/Debug/RePlexTest/Test.o: test/Test.cpp test/pub/Test.h \
+obj/Debug/RePlexTest/Test.o: test/Test.cpp \
+  /Users/suyog_k/Desktop/code-reloader/test/pub/Test.h \
   /Users/suyog_k/Desktop/code-reloader/lib/pub/RePlex.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/dlfcn.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h \
@@ -765,7 +766,7 @@ obj/Debug/RePlexTest/Test.o: test/Test.cpp test/pub/Test.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/string_view \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string_view.h
 
-test/pub/Test.h:
+/Users/suyog_k/Desktop/code-reloader/test/pub/Test.h:
 
 /Users/suyog_k/Desktop/code-reloader/lib/pub/RePlex.h:
 

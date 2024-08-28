@@ -10,16 +10,18 @@ endif
 
 ifeq ($(config),debug)
   RePlex_config = debug
-  RePlexRuntime_config = debug
   RePlexTest_config = debug
+  RePlexRuntime_config = debug
+  GoogleTest_config = debug
 endif
 ifeq ($(config),release)
   RePlex_config = release
-  RePlexRuntime_config = release
   RePlexTest_config = release
+  RePlexRuntime_config = release
+  GoogleTest_config = release
 endif
 
-PROJECTS := RePlex RePlexRuntime RePlexTest
+PROJECTS := RePlex RePlexTest RePlexRuntime GoogleTest
 
 .PHONY: all clean help $(PROJECTS) 
 
@@ -31,22 +33,29 @@ ifneq (,$(RePlex_config))
 	@${MAKE} --no-print-directory -C . -f RePlex.make config=$(RePlex_config)
 endif
 
-RePlexRuntime: RePlex
-ifneq (,$(RePlexRuntime_config))
-	@echo "==== Building RePlexRuntime ($(RePlexRuntime_config)) ===="
-	@${MAKE} --no-print-directory -C . -f RePlexRuntime.make config=$(RePlexRuntime_config)
-endif
-
 RePlexTest:
 ifneq (,$(RePlexTest_config))
 	@echo "==== Building RePlexTest ($(RePlexTest_config)) ===="
 	@${MAKE} --no-print-directory -C . -f RePlexTest.make config=$(RePlexTest_config)
 endif
 
+RePlexRuntime: RePlex GoogleTest
+ifneq (,$(RePlexRuntime_config))
+	@echo "==== Building RePlexRuntime ($(RePlexRuntime_config)) ===="
+	@${MAKE} --no-print-directory -C . -f RePlexRuntime.make config=$(RePlexRuntime_config)
+endif
+
+GoogleTest:
+ifneq (,$(GoogleTest_config))
+	@echo "==== Building GoogleTest ($(GoogleTest_config)) ===="
+	@${MAKE} --no-print-directory -C . -f GoogleTest.make config=$(GoogleTest_config)
+endif
+
 clean:
 	@${MAKE} --no-print-directory -C . -f RePlex.make clean
-	@${MAKE} --no-print-directory -C . -f RePlexRuntime.make clean
 	@${MAKE} --no-print-directory -C . -f RePlexTest.make clean
+	@${MAKE} --no-print-directory -C . -f RePlexRuntime.make clean
+	@${MAKE} --no-print-directory -C . -f GoogleTest.make clean
 
 help:
 	@echo "Usage: make [config=name] [target]"
@@ -59,7 +68,8 @@ help:
 	@echo "   all (default)"
 	@echo "   clean"
 	@echo "   RePlex"
-	@echo "   RePlexRuntime"
 	@echo "   RePlexTest"
+	@echo "   RePlexRuntime"
+	@echo "   GoogleTest"
 	@echo ""
 	@echo "For more information, see https://github.com/premake/premake-core/wiki"

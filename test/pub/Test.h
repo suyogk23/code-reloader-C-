@@ -6,7 +6,7 @@
 
 extern "C"
 {
-  void foo();
+  int foo(int x);
   extern int bar;
 }
 
@@ -15,8 +15,8 @@ std::array<const char*, 2> g_exports = {"foo", "bar"};
 class TestModule : public RePlexModule <TestModule, g_exports.size()>
 {
 public:
-    static void Foo(){
-        GetInstance().Execute<void>("foo");
+    static int Foo(int x){
+        return GetInstance().Execute<int, int>("foo", x);
     }
 
     static int GetBar(){

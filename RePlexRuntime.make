@@ -24,14 +24,14 @@ ifeq ($(config),debug)
   TARGET = $(TARGETDIR)/RePlexRuntime
   OBJDIR = obj/Debug/RePlexRuntime
   DEFINES += -DDEBUG
-  INCLUDES += -Ilib/pub
+  INCLUDES += -Ilib/pub -Itest/pub -Igoogletest/googletest/include
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -g -std=c++14
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  LIBS += bin/Debug/libRePlex.dylib
-  LDDEPS += bin/Debug/libRePlex.dylib
+  LIBS += bin/Debug/libRePlex.dylib bin/Debug/libGoogleTest.a
+  LDDEPS += bin/Debug/libRePlex.dylib bin/Debug/libGoogleTest.a
   ALL_LDFLAGS += $(LDFLAGS) -Wl,-rpath,'@loader_path/.'
   LINKCMD = $(CXX) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
@@ -59,14 +59,14 @@ ifeq ($(config),release)
   TARGET = $(TARGETDIR)/RePlexRuntime
   OBJDIR = obj/Release/RePlexRuntime
   DEFINES += -DRELEASE
-  INCLUDES += -Ilib/pub
+  INCLUDES += -Ilib/pub -Itest/pub -Igoogletest/googletest/include
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O2
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -O2 -std=c++14
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  LIBS += bin/Release/libRePlex.dylib
-  LDDEPS += bin/Release/libRePlex.dylib
+  LIBS += bin/Release/libRePlex.dylib bin/Release/libGoogleTest.a
+  LDDEPS += bin/Release/libRePlex.dylib bin/Release/libGoogleTest.a
   ALL_LDFLAGS += $(LDFLAGS) -Wl,-rpath,'@loader_path/.'
   LINKCMD = $(CXX) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
